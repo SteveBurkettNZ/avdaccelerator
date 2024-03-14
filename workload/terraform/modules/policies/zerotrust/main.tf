@@ -7,7 +7,7 @@ resource "azurerm_policy_set_definition" "avdzt" {
   metadata     = <<METADATA
   {
     "category": "AVD Zero Trust Policies",
-    "version": "1.1.0"
+    "version": "1.2.0"
   }
   METADATA
 
@@ -22,11 +22,6 @@ resource "azurerm_policy_set_definition" "avdzt" {
   }
 
   #Azure Defender for servers should be enabled
-  policy_definition_reference {
-    policy_definition_id = "/providers/Microsoft.Authorization/policyDefinitions/308fbb08-4ab8-4e67-9b29-592e93fb94fa"
-  }
-
-  #Storage accounts should disable public network access
   policy_definition_reference {
     policy_definition_id = "/providers/Microsoft.Authorization/policyDefinitions/4da35fc9-c9e7-4960-aec9-797fe7d9051d"
   }
@@ -95,6 +90,7 @@ resource "azurerm_policy_set_definition" "avdzt" {
   policy_definition_reference {
     policy_definition_id = "/providers/Microsoft.Authorization/policyDefinitions/c25dcf31-878f-4eba-98eb-0818fdc6a334"
   }
+
   #Azure Virtual Desktop hostpools should disable public network access only on session hosts
   policy_definition_reference {
     policy_definition_id = "/providers/Microsoft.Authorization/policyDefinitions/a22065a3-3b04-46ff-b84c-2d30e5c300d0"
